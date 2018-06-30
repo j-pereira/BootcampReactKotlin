@@ -1,70 +1,68 @@
 package app
 
-import kotlinx.html.js.onChangeFunction
+
+import model.Todo
 import react.*
 import react.dom.*
-import logo.*
-import ticker.*
-import util.translate
-import util.value
+
 
 class App : RComponent<RProps, App.State>() {
 
-    class State(var inputValue: String) : RState
+    init {
+        state.todos = loadTodos()
+    }
 
-    override fun componentWillMount() {
+    fun loadTodos(): List<Todo> {
+        return listOf(
+
+        )
+    }
+
+    fun createTodo(todo: Todo){
+        val oldTodos = state.todos
+
+        setState{
+            todos = oldTodos + todo
+        }
+    }
+
+    fun removeTodo(todo: Todo) {
+        val oldTodos = state.todos
+
+        setState{
+            todos = oldTodos - todo
+        }
+    }
+
+    fun updateTodo(todo: Todo) {
+        val newTodo = state.todos.map { oldTodo ->
+            if(todo.id == oldTodo.id) {
+                todo
+            }else {
+                oldTodo
+            }
+        }
         setState {
-            inputValue = "Input your name"
+            todos = newTodo
         }
     }
 
     override fun RBuilder.render() {
-        h1 {
-            + "Hello Bootcamp".translate()
-        }
+        section(classes = "todoapp") {
+            headerInput(::createTodo)
 
-        div {
-
-            input{
-                attrs {
-                    value = state.inputValue
-                    onChangeFunction = { event ->
-                        val value = event.value
-                        setState {
-                            inputValue = value
-                        }
-                    }
-                }
+            section(classes = "main") {
+                todoList(state.todos, ::removeTodo, ::updateTodo)
             }
+
         }
-
-        test(state.inputValue)
-
     }
+
+    class State(var todos: List<Todo>): RState
+
+
 }
 
 fun RBuilder.app() = child(App::class) {}
-
-
-
-
-
-class Test : RComponent<Test.Props, RState>() {
-
-    class Props(var value: String) : RProps
-
-    override fun RBuilder.render(){
-
-        div {
-            span {
-                + props.value
-            }
-        }
-    }
-}
-
-fun RBuilder.test(value: String) = child(Test::class) {
-    attrs.value = value
-}
 
 

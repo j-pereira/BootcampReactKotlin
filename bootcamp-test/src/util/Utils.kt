@@ -8,7 +8,8 @@ val Event.value: String
 
 
 private val enUSLanguage = mapOf(
-        "Hello Bootcamp" to "Hello Bootcamp2"
+        "todos" to "todos",
+        "What needs to be done?" to "What needs to be done?"
 )
 
 
