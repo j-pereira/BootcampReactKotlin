@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "todomvc-app-css": "^2.1.2",
+    "todomvc-common": "^1.0.5"
   },
   "devDependencies": {
     "react-scripts-kotlin": "2.1.11"

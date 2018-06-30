@@ -5,6 +5,8 @@ import react.*
 import react.dom.*
 import logo.*
 import ticker.*
+import util.translate
+import util.value
 
 class App : RComponent<RProps, App.State>() {
 
@@ -18,7 +20,7 @@ class App : RComponent<RProps, App.State>() {
 
     override fun RBuilder.render() {
         h1 {
-            + "Hello Bootcamp"
+            + "Hello Bootcamp".translate()
         }
 
         div {
@@ -27,9 +29,8 @@ class App : RComponent<RProps, App.State>() {
                 attrs {
                     value = state.inputValue
                     onChangeFunction = { event ->
-                        val value = event.currentTarget.asDynamic().value
+                        val value = event.value
                         setState {
-
                             inputValue = value
                         }
                     }
