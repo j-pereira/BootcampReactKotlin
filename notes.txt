@@ -1,0 +1,19 @@
+Kotlin:
+Extensions functions: variable.functionThatYouCreated
+
+Infix Functions: like python, create a functions and give it a name to use without calling with ()
+
+DSL: using react with kotlin? baited
+Domain Specifc Language: Create a language inside kotling, that can use resouces from another languages
+
+React:
+Model orientated 
+Complexies UI
+Single page application
+
+React JSX: not HTML
+JavaScript + HTML = ReactJS
+Life Cycle: Mounting, Updating, Unmounting
+React manipulate DOM in a way that only the components that needs to be updated are
+
+Usar node para gerenciar pacotes
